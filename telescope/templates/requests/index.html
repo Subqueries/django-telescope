@@ -3,7 +3,7 @@
 {% block content %}
     <h1>Requests</h1>
 
-    <div class="mt-8 flow-root" x-data="{ requests: '{{ requests }}' }">
+    <div class="mt-8 flow-root" x-data="{{requests}}">
         <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
                 <table class="min-w-full divide-y divide-gray-300">
@@ -20,20 +20,25 @@
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200 bg-white">
-                        <template x-for="request in requests">
+                        <template x-for="value in values">
                             <tr>
                                 <td class="whitespace-nowrap py-2 pl-4 pr-3 text-sm text-gray-500 sm:pl-0 w-5">
                                     <span class="inline-flex items-center rounded-md bg-gray-100 px-2 py-1 text-xs font-medium text-gray-600"
-                                        x-text="request.id"
-                                    >
+                                        x-text="value.content.method">
                                     </span>
                                 </td>
-                                <td class="whitespace-nowrap px-2 py-2 text-sm font-medium text-gray-900">/</td>
+                                <td class="whitespace-nowrap px-2 py-2 text-sm font-medium text-gray-900" x-text="value.content.uri">/</td>
                                 <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">
-                                    <span class="inline-flex items-center rounded-md bg-green-100 px-2 py-1 text-xs font-medium text-green-700">200</span>
+                                    <span class="inline-flex items-center rounded-md bg-green-100 px-2 py-1 text-xs font-medium text-green-700"
+                                        x-text="value.content.response_status">
+                                    </span>
                                 </td>
-                                <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500 w-5">300ms</td>
-                                <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500 w-5">2023-12-12 12:12:12</td>
+                                <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500 w-5"
+                                    x-text="value.content.duration + ' ms'">
+                                </td>
+                                <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500 w-5"
+                                    x-text="value.created_at">
+                                </td>
                                 <td class="relative whitespace-nowrap py-2 pl-3 pr-4 text-right text-sm font-medium sm:pr-0 w-5">
                                     <a href="#" class="text-indigo-600 hover:text-indigo-900">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">

@@ -19,5 +19,5 @@ class Entry(models.Model):
     updated_at = DateTimeField(auto_now=True)
 
     @property
-    def get_content(self):
-        return json.loads(self.content)
+    def uuid(self):
+        return str(self.id)
