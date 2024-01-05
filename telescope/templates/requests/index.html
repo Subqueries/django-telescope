@@ -29,7 +29,12 @@
                                 </td>
                                 <td class="whitespace-nowrap px-2 py-2 text-sm font-medium text-gray-900" x-text="value.content.uri">/</td>
                                 <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">
-                                    <span class="inline-flex items-center rounded-md bg-green-100 px-2 py-1 text-xs font-medium text-green-700"
+                                    <span
+                                        :class="{
+                                            'inline-flex items-center rounded-md bg-green-100 px-2 py-1 text-xs font-medium text-green-700': value.content.response_status == '200',
+                                            'inline-flex items-center rounded-md bg-red-500 px-2 py-1 text-xs font-medium text-white': value.content.response_status == '500',
+                                            'inline-flex items-center rounded-md bg-yellow-100 px-2 py-1 text-xs font-medium text-black-700': value.content.response_status == '404'
+                                        }"
                                         x-text="value.content.response_status">
                                     </span>
                                 </td>
