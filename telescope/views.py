@@ -10,6 +10,7 @@ def index(request):
 
     paginator = Paginator(requests, 10)
     page = request.GET.get("page", 1)
+    search = request.GET.get("search", '')
 
     try:
         paginated_items = paginator.page(page)
@@ -29,4 +30,4 @@ def index(request):
         for item in paginated_items
     ]
 
-    return render(request, "requests/index.html", {'requests': json.dumps({'values': requests}), 'paginated_items': paginated_items})
+    return render(request, "requests/index.html", {'requests': json.dumps({'values': requests}), 'paginated_items': paginated_items, 'search': search})
