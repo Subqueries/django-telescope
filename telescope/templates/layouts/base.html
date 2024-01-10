@@ -164,6 +164,13 @@
             </main>
         </div>
     </div>
+    <script>
+        function applyFilters() {
+            const urlParams = new URLSearchParams(window.location.search);
+            urlParams.set('search', this.search);
+            window.location.search = urlParams;
+        }
+    </script>
 </body>
 
 </html>
