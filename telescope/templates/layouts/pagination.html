@@ -1,0 +1,17 @@
+<nav class="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6" aria-label="Pagination">
+    <div class="hidden sm:block">
+      <p class="text-sm text-gray-700">
+        Page <span class="font-medium">{{ paginated_items.number }}</span> of <span class="font-medium">{{ paginated_items.paginator.num_pages }}</span>
+      </p>
+    </div>
+    <div class="flex flex-1 justify-between sm:justify-end">
+        {% if paginated_items.has_previous %}
+            <a href="?page=1" class="relative inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus-visible:outline-offset-0">&laquo; first</a>
+            <a href="?page={{ paginated_items.previous_page_number }}" class="ml-2 relative inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus-visible:outline-offset-0">previous</a>
+        {% endif %}
+        {% if paginated_items.has_next %}
+            <a href="?page={{ paginated_items.next_page_number }}" class="ml-2 relative inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus-visible:outline-offset-0">next</a>
+            <a href="?page={{ paginated_items.paginator.num_pages }}" class="ml-2 relative inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus-visible:outline-offset-0">last &raquo;</a>
+        {% endif %}
+    </div>
+</nav>
